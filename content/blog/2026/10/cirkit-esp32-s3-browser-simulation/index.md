@@ -38,7 +38,7 @@ Cirkit AI created the circuit, wired the ESP32-S3 to the display, and wrote the 
     caption="An ISS tracker developed with Cirkit AI, shown after refinement. Compiled ESP32-S3 firmware drives the simulated ILI9341 display through the emulated SPI controller, rendering the map and live ISS telemetry."
 >}}
 
-[Open the ISS Space Tracker project](https://app.cirkitdesigner.com/project/e702b8ea-35da-441f-b435-29af65798aa0) in Cirkit Designer and start the simulation to see live position updates.
+[Open the ISS Space Tracker project](https://app.cirkitdesigner.com/project/e702b8ea-35da-441f-b435-29af65798aa0) in Cirkit Designer and start the simulation to see it running in real time.
 
 With the tracker running, I worked with Cirkit AI to refine the display with a photographic Earth map, readable telemetry cards, and an animated ISS marker. I then asked it to show where the station was heading. The agent added a request for predicted positions covering the next 45 minutes and plotted them as a dashed line, alongside a blue trail of previously received positions. Updates redraw only the affected areas, keeping the map visible as the readings change.
 
@@ -61,8 +61,6 @@ Users can also upload compatible precompiled firmware binaries directly into the
 We built the emulator from scratch in Rust and compiled it to WebAssembly so it can run locally on your device. Getting unmodified firmware to run was one of the hardest engineering challenges. The emulator must execute Espressif’s ROM code, support the second-stage bootloader as it loads the application, and reproduce the hardware behavior needed to run FreeRTOS and your application. Each stage depends on correct processor state, memory access, and peripheral behavior—before your application can execute.
 
 Once running, the firmware communicates with simulated components through the emulated hardware interfaces. It can read a sensor over I2C, send display commands over SPI, or control a servo through PWM. The component models respond to those operations, producing the behavior you see in the circuit.
-
-In the ISS tracker, for example, the display library sends commands and pixel data through the emulated SPI controller. Cirkit routes those transfers to the connected ILI9341 model, which uses the chip-select and data/command signals to interpret them. Display commands set the drawing region, and subsequent pixel data updates the model’s display buffer. The map is therefore drawn by the running firmware through the display protocol, rather than supplied as a pre-rendered simulator animation.
 
 Both chip models support GPIO, UART, I2C, SPI, ADC, timers, LEDC PWM, and RMT transmission for NeoPixels. Peripheral capabilities and pin assignments differ between the two chips. For the board used in this example, [Cirkit’s ESP32-S3 documentation](https://www.cirkitdesigner.com/docs/platforms/esp32-s3) lists supported features and practical constraints.
 

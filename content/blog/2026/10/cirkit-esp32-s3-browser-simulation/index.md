@@ -108,6 +108,6 @@ Building the project and extending its simulation support become part of the sam
 
 ## What comes next
 
-With ESP32 and ESP32-S3 simulation available, support for ESP32-C3 and ESP32-C6 is in development. We are also working to bring simulation feedback directly into Cirkit AI’s development loop so the agent can use observed behavior to guide its next change.
+With ESP32 and ESP32-S3 simulation available, support for ESP32-C3 and ESP32-C6 is coming soon. We are also working to bring simulation feedback directly into Cirkit AI’s development loop, allowing the agent to run firmware, observe how a project behaves, identify problems, and iteratively refine the circuit and firmware.
 
-Cirkit Designer aims to make hardware prototyping more accessible. You can start your next project in [Cirkit Designer](https://www.cirkitdesigner.com/), work with Cirkit AI on the circuit and firmware, and test your design in simulation.
+Looking further ahead, our ambition is to help developers move from an initial idea to a working physical prototype—connecting circuit design and simulation with component sourcing, hardware assembly, and testing on real devices.

@@ -1,6 +1,6 @@
 ---
 title: "Cirkit Designer: AI-powered ESP32 development with instruction-accurate simulation"
-date: 2026-10-24
+date: 2026-10-26
 summary: "This article introduces Cirkit Designer's simulation architecture for ESP32 and ESP32-S3: an instruction-accurate emulator built from scratch in Rust, compiled to WebAssembly, and connected to simulated hardware in the browser. We'll look at how compiled firmware executes and how it interacts with simulated peripherals."
 tags:
   - Arduino
